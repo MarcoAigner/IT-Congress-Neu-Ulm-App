@@ -1,0 +1,71 @@
+{
+   "altered":"29.12.2019-14:36",
+   "categories":[
+      "Data Science & Softwareentwicklung",
+      "Informationssicherheit & Datenschutz",
+      "Digitale Transformation 4.0",
+      "New Work- Modern Workplace",
+      "InnoSÜD"
+   ],
+   "events":[
+      {
+         "time":"09:15-09:30",
+         "lectures":[
+            "Begrüßung durch Prod. Dr. Julia Kormann"
+         ]
+      },
+      {
+         "time":"09:30-10:30",
+         "lectures":[
+            "Keynote: Der Masterplan - Chinas Weg zur digitalen Weltmacht"
+         ]
+      },
+      {
+         "time":"10:30-11:00",
+         "lectures":[
+            "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse"
+         ]
+      },
+      {
+         "time":"11:00-11:45",
+         "lectures":[
+            {
+               "title":"Fair Play für Künstliche Intelligenz",
+               "lecturer":[
+                  "Dr Valentin Zacharias"
+               ],
+               "description":"some descriptive stuff"
+            },
+            {
+               "title":"User Awareness - Das beste Intrusioon Detection System der Welt",
+               "lecturer":[
+                  "Götz Weinmann"
+               ],
+               "description":"some descriptive stuff"
+            },
+            {
+               "title":"Digitale Tranformation im Mittelstand - Vorgehensmodelle und Best Practices",
+               "lecturer":[
+                  "Prof. Dr. Klaus Lang"
+               ],
+               "description":"some descriptive stuff"
+            },
+            {
+               "title":"Einführung Digital Workplace bei einem mittelständischen Unternehmen - ein Praxisbericht",
+               "lecturer":[
+                  "Thomas Jupe"
+               ],
+               "description":"some descriptive stuff"
+            },
+            {
+               "title":"Soft Skills als Erfolgsfaktor in agilen Projekten: Programmiersprache Mensch - Wie Kommunikation gelingt",
+               "lecturer":[
+                  "Prof. Dr. Oliver Griebele",
+                  "Prof. Dr. Philip Brune"
+               ],
+               "description":"some descriptive stuff"
+            }
+         ]
+      }
+   ]
+}
