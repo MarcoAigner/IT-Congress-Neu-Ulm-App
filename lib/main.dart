@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:it_congress/information.dart';
+import 'package:it_congress/events.dart';
+import 'package:it_congress/impressum.dart';
 import 'package:it_congress/registration.dart';
 
 void main() => runApp(MyApp());
@@ -49,20 +50,19 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-    List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Events',
-      style: optionStyle,
-    ),
-    InformationPage(),
+  List<Widget> _widgetOptions = <Widget>[
+    EventsWidget(),
+    ImpressumWidget(),
   ];
-
-
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void showSnackbar(String text) {
+    var snackBar = SnackBar(content: Text(text));
   }
 
   @override
@@ -80,8 +80,18 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton:
-            FloatingActionButton(child: Icon(Icons.group_add)),
+        floatingActionButton: Builder(builder: (BuildContext context) {
+          return FloatingActionButton(
+              child: Icon(Icons.group_add),
+              onPressed: () {
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                    "Registration will be implemented here soon",
+                    textAlign: TextAlign.center,
+                  ),
+                ));
+              });
+        }),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
