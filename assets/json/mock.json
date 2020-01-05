@@ -1,71 +1,89 @@
 {
-   "altered":"29.12.2019-14:36",
-   "categories":[
-      "Data Science & Softwareentwicklung",
-      "Informationssicherheit & Datenschutz",
-      "Digitale Transformation 4.0",
-      "New Work- Modern Workplace",
-      "InnoSÜD"
-   ],
-   "events":[
-      {
-         "time":"09:15-09:30",
-         "lectures":[
-            "Begrüßung durch Prod. Dr. Julia Kormann"
-         ]
-      },
-      {
-         "time":"09:30-10:30",
-         "lectures":[
-            "Keynote: Der Masterplan - Chinas Weg zur digitalen Weltmacht"
-         ]
-      },
-      {
-         "time":"10:30-11:00",
-         "lectures":[
-            "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse"
-         ]
-      },
-      {
-         "time":"11:00-11:45",
-         "lectures":[
-            {
-               "title":"Fair Play für Künstliche Intelligenz",
-               "lecturer":[
-                  "Dr Valentin Zacharias"
-               ],
-               "description":"some descriptive stuff"
-            },
-            {
-               "title":"User Awareness - Das beste Intrusioon Detection System der Welt",
-               "lecturer":[
-                  "Götz Weinmann"
-               ],
-               "description":"some descriptive stuff"
-            },
-            {
-               "title":"Digitale Tranformation im Mittelstand - Vorgehensmodelle und Best Practices",
-               "lecturer":[
-                  "Prof. Dr. Klaus Lang"
-               ],
-               "description":"some descriptive stuff"
-            },
-            {
-               "title":"Einführung Digital Workplace bei einem mittelständischen Unternehmen - ein Praxisbericht",
-               "lecturer":[
-                  "Thomas Jupe"
-               ],
-               "description":"some descriptive stuff"
-            },
-            {
-               "title":"Soft Skills als Erfolgsfaktor in agilen Projekten: Programmiersprache Mensch - Wie Kommunikation gelingt",
-               "lecturer":[
-                  "Prof. Dr. Oliver Griebele",
-                  "Prof. Dr. Philip Brune"
-               ],
-               "description":"some descriptive stuff"
-            }
-         ]
-      }
-   ]
+  "altered": "29.12.2019-14:36",
+  "timeslots": [
+    {
+      "time": "09:15-09:30",
+      "events": [
+        {
+          "title": "BegrÃ¼ÃŸung durch Prof. Dr. Julia Kormann & OB Gunter Czisch",
+          "lecturers": [
+            "Prof. Dr. Julia Kormann",
+            "Gunter Czisch"
+          ],
+          "category": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "time": "09:30-10:30",
+      "events": [
+        {
+          "title": "Keynote: Der Masterplan - Chinas Weg zur digitalen Weltmacht",
+          "lecturers": [
+            "Johannes Stephany"
+          ],
+          "category": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "time": "10:30-11:00",
+      "events": [
+        {
+          "title": "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse",
+          "lecturers": "",
+          "category": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "time": "11:00-11:45",
+      "events": [
+        {
+          "title": "Fair Play fÃ¼r KÃ¼nstliche Intelligenz",
+          "lecturers": [
+            "Dr Valentin Zacharias"
+          ],
+          "category": "Data Science & Softwareentwicklung",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "User Awareness - Das beste Intrusioon Detection System der Welt",
+          "lecturers": [
+            "GÃ¶tz Weinmann"
+          ],
+          "category": "Informationssicherheit & Datenschutz",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "Digitale Tranformation im Mittelstand - Vorgehensmodelle und Best Practices",
+          "lecturers": [
+            "Prof. Dr. Klaus Lang"
+          ],
+          "category": "Digitale Transformation 4.0",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "EinfÃ¼hrung Digital Workplace bei einem mittelstÃ¤ndischen Unternehmen - ein Praxisbericht",
+          "lecturers": [
+            "Thomas Jupe"
+          ],
+          "category": "New Work-Modern Workplace",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "Soft Skills als Erfolgsfaktor in agilen Projekten: Programmiersprache Mensch - Wie Kommunikation gelingt",
+          "lecturers": [
+            "Prof. Dr. Oliver Griebele",
+            "Prof. Dr. Philip Brune"
+          ],
+          "category": "InnoSÃœD",
+          "description": "some descriptive stuff"
+        }
+      ]
+    }
+  ]
 }

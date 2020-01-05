@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:it_congress/events.dart';
 import 'package:it_congress/impressum.dart';
-import 'package:it_congress/registration.dart';
+import 'package:it_congress/people.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -61,8 +64,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void showSnackbar(String text) {
-    var snackBar = SnackBar(content: Text(text));
+  void openMail () async{
+    const url = "mailto:info@hs-neu-ulm.de?subject=Anmeldung IT-Kongress 2020&body=Sehr geehrte Damen und Herren,\nich möchte mich hiermit für den IT-Kongress 2020 anmelden.\nMein Name ist ";
+    if(await canLaunch(url)){
+      await launch(url);
+    }else{
+      throw "Could not launch $url";
+    }
   }
 
   @override
@@ -84,12 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return FloatingActionButton(
               child: Icon(Icons.group_add),
               onPressed: () {
-                Scaffold.of(context).showSnackBar(SnackBar(
-                  content: Text(
-                    "Registration will be implemented here soon",
-                    textAlign: TextAlign.center,
-                  ),
-                ));
+                openMail();
               });
         }),
         body: Center(
