@@ -12,8 +12,8 @@ This way, easy editing is assured.
 
 ## Planned features
 
-1. DONE Presentation of the events (it is still unsure which design method will be used in order to be most comforting to the user).
-2. DONE Registration for the it-congress.
+1. **DONE** Presentation of the events 
+2. **DONE** Registration for the it-congress.
 3. Detail-views of each event including the title, lecturer, and optional images or descriptions
 4. Implementation of a notify-function: Users can subscribe to events they're interested in, and get notified when they are about to start.
 5. Implementation of a rating and communication system for the user to rate the event and provide further feedback through a text-input.
