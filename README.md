@@ -2,13 +2,14 @@
 
 This project is implementing an app, representing the annual "it-congress" held at hnu university of applied sciences in Neu-Ulm.
 
+[logo]: https://i.imgur.com/SB3sgBv.jpg "App Image"
+
 ## Status Quo
-By now, the app is structured using a bottom navigation bar.
-The main page will inform about every event at the congress.
-A prominent floating action button at the bottom of the app will lead to a registration page.
-A second page will inform the user about the app itself and its creators
-The app will be designed to retrieve its information through an incoming .json-file. This file will be held locally for debugging reasons. Later on, this method can be extended to try to retrieve the latest version of the file from a backend.
-This way, easy editing is assured.
+The app is structured using a Bottom NavigationBar.
+The Main Page contains a ListView containing every timeslot and its corresponding events.
+The Second Page contains a simple impressum.
+Using the prominent FloatingActionBottom at the lower center of the app, users get to the registration page, where they are able to sign up for the congress.
+
 
 ## Planned features
 
