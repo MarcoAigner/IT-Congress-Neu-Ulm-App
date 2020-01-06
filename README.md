@@ -2,7 +2,7 @@
 
 This project is implementing an app, representing the annual "it-congress" held at hnu university of applied sciences in Neu-Ulm.
 
-[logo]: https://i.imgur.com/SB3sgBv.jpg "App Image"
+<img src="https://i.imgur.com/SB3sgBv.jpg" width="800" alt="it-congress-app">
 
 ## Status Quo
 The app is structured using a Bottom NavigationBar.
