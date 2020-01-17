@@ -5,6 +5,9 @@ import 'package:it_congress/impressum.dart';
 import 'package:it_congress/people.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'registration.dart';
+import 'registration.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -26,6 +29,9 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.green),
       home: MyHomePage(title: 'IT Kongress Neu-Ulm'),
+      routes: {
+        '/registration': (context) => Registration(),
+      },
     );
   }
 }
@@ -92,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return FloatingActionButton(
               child: Icon(Icons.group_add),
               onPressed: () {
-                openMail();
+                Navigator.pushNamed(context, '/registration');
               });
         }),
         body: Center(
