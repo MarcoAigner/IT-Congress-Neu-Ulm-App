@@ -46,9 +46,10 @@ class EventsWidgetState extends State<EventsWidget> {
                               Text(newData["timeslots"][timeslotIndex]["time"],
                                 style: TextStyle(
                                   fontSize: 25,
+                                  fontWeight: FontWeight.bold,
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 0.5
+                                    ..strokeWidth = 0.1
                                     ..color = Colors.black
 
                                   )
@@ -57,7 +58,8 @@ class EventsWidgetState extends State<EventsWidget> {
                                   newData["timeslots"][timeslotIndex]["time"],
                                   style: TextStyle(
                                     fontSize: 25,
-                                    color: Colors.green
+                                    color: Colors.lightGreen,
+                                    fontWeight: FontWeight.bold
                                   ),
                                 )],
                               ),

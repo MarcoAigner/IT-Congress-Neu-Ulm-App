@@ -141,7 +141,7 @@ class _RegistrationState extends State<Registration> {
                 Padding(
                     padding: const EdgeInsets.all(20),
                     child: RaisedButton(
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                       child: Text(
                         "Anmelden",
                         style: TextStyle(color: Colors.white, fontSize: 20),

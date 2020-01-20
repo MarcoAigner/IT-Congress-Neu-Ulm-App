@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
           primaryColor: Colors.blueGrey,
-          accentColor: Colors.green,
+          accentColor: Colors.lightGreen,
           fontFamily: 'Roboto'
 
       ),
@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.pushNamed(context, '/registration');
             },
-            child: Icon(Icons.group_add)),
+            child: Icon(Icons.group_add, color: Colors.white,)),
         body: Center(
           //child: _widgetOptions.elementAt(_selectedIndex),
           child: currentWidget,
@@ -141,56 +141,64 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: _onItemTapped)*/
           child: Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Expanded(
+                flex: 1,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MaterialButton(
-                        textColor: Colors.white,
-                        child: Column(
-                          children: <Widget>[
-                            Icon(Icons.event),
-                            Text("Veranstaltungen")
-                          ],
-                        ),
-                        onPressed: () {
-                          if (currentWidget != EventsWidget()) {
-                            setState(() {
-                              currentWidget = _widgetOptions[0];
-                            });
-                          }
-                        },
+                    MaterialButton(
+                      textColor: Colors.white,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(Icons.event),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text("Veranstaltungen"),
+                          )
+                        ],
                       ),
+                      onPressed: () {
+                        if (currentWidget != EventsWidget()) {
+                          setState(() {
+                            currentWidget = _widgetOptions[0];
+                          });
+                        }
+                      },
                     )
                   ],
                 ),
               ),
               Expanded(
+                flex: 1,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MaterialButton(
-                        textColor: Colors.white,
-                        child: Column(
-                          children: <Widget>[
-                            Icon(Icons.info_outline),
-                            Text("Über")
-                          ],
-                        ),
-                        onPressed: () {
-                          if (currentWidget != ImpressumWidget()) {
-                            setState(() {
-                              currentWidget = _widgetOptions[1];
-                            });
-                          }
-                        },
+                    MaterialButton(
+                      textColor: Colors.white,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(Icons.info_outline),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text("Über"),
+                          )
+                        ],
                       ),
+                      onPressed: () {
+                        if (currentWidget != ImpressumWidget()) {
+                          setState(() {
+                            currentWidget = _widgetOptions[1];
+                          });
+                        }
+                      },
                     )
                   ],
                 ),
