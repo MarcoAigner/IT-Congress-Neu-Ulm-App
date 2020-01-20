@@ -24,7 +24,7 @@ class EventsWidgetState extends State<EventsWidget> {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future:
-            DefaultAssetBundle.of(context).loadString('assets/json/mock.json'),
+        DefaultAssetBundle.of(context).loadString('assets/json/mock.json'),
         builder: (context, snapshot) {
           var newData = json.decode(snapshot.data.toString());
           return ListView.builder(
@@ -34,18 +34,34 @@ class EventsWidgetState extends State<EventsWidget> {
                 child: Column(
                   children: <Widget>[
                     Container(
+                      color: Colors.grey,
                       child: Card(
                         elevation: 20,
                         child: Column(
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(top: 20),
-                              child: Text(
+                              child: Stack(
+                                children: <Widget>[
+                              Text(newData["timeslots"][timeslotIndex]["time"],
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 0.5
+                                    ..color = Colors.black
+
+                                  )
+                              ),
+                                Text(
                                   newData["timeslots"][timeslotIndex]["time"],
                                   style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.green)),
+                                    fontSize: 25,
+                                    color: Colors.green
+                                  ),
+                                )],
+                              ),
+
                             ),
                             ListView.builder(
                               itemBuilder: (context, eventIndex) {
@@ -54,7 +70,7 @@ class EventsWidgetState extends State<EventsWidget> {
                                   child: Container(
                                     decoration: BoxDecoration(boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey, blurRadius: 5)
+                                          color: Colors.grey, blurRadius: 10)
                                     ]),
                                     child: Card(
                                       elevation: 15,
@@ -62,23 +78,24 @@ class EventsWidgetState extends State<EventsWidget> {
                                         padding: const EdgeInsets.all(25.0),
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
+                                          MainAxisAlignment.spaceEvenly,
                                           children: <Widget>[
                                             Padding(
-                                              padding: const EdgeInsets.all(15.0),
+                                              padding: const EdgeInsets.all(
+                                                  15.0),
                                               child: Text(
                                                 newData["timeslots"]
-                                                        [timeslotIndex]["events"]
-                                                    [eventIndex]["title"],
+                                                [timeslotIndex]["events"]
+                                                [eventIndex]["title"],
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(fontSize: 20),
                                               ),
                                             ),
                                             Text(newData["timeslots"]
-                                                                [timeslotIndex]
-                                                            ["events"][eventIndex]
-                                                        ["lecturers"]
-                                                    .toString() ??
+                                            [timeslotIndex]
+                                            ["events"][eventIndex]
+                                            ["lecturers"]
+                                                .toString() ??
                                                 ""),
                                           ],
                                         ),
@@ -90,7 +107,7 @@ class EventsWidgetState extends State<EventsWidget> {
                               itemCount: newData == null
                                   ? 0
                                   : newData["timeslots"][timeslotIndex]["events"]
-                                      .length,
+                                  .length,
                               //Handles the correct sizing while using nested list views
                               shrinkWrap: true,
 

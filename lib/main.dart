@@ -25,7 +25,11 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.green),
+          primaryColor: Colors.blueGrey,
+          accentColor: Colors.green,
+          fontFamily: 'Roboto'
+
+      ),
       home: MyHomePage(title: 'IT Kongress Neu-Ulm'),
       routes: {
         '/registration': (context) => Registration(),
@@ -48,12 +52,12 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   Widget currentWidget = EventsWidget();
 
   List events;
@@ -90,10 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      extendBody: true,
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
+          title: Text(widget.title, style: TextStyle(fontWeight: FontWeight.bold),),
+          centerTitle: true,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         /* floatingActionButton: Builder(builder: (BuildContext context) {
@@ -116,6 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: currentWidget,
         ),
         bottomNavigationBar: BottomAppBar(
+          color: Theme.of(context).primaryColor,
           shape: CircularNotchedRectangle(),
           notchMargin: 10.0,
           /* child: BottomNavigationBar(
@@ -143,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: MaterialButton(
-                        textColor: Colors.black,
+                        textColor: Colors.white,
                         child: Column(
                           children: <Widget>[
                             Icon(Icons.event),
@@ -151,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         onPressed: () {
-                          if(currentWidget != EventsWidget()){
+                          if (currentWidget != EventsWidget()) {
                             setState(() {
                               currentWidget = _widgetOptions[0];
                             });
@@ -169,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: MaterialButton(
-                        textColor: Colors.black,
+                        textColor: Colors.white,
                         child: Column(
                           children: <Widget>[
                             Icon(Icons.info_outline),
@@ -177,10 +184,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         onPressed: () {
-                          if(currentWidget != ImpressumWidget()){
-                           setState(() {
-                             currentWidget = _widgetOptions[1];
-                           });
+                          if (currentWidget != ImpressumWidget()) {
+                            setState(() {
+                              currentWidget = _widgetOptions[1];
+                            });
                           }
                         },
                       ),
