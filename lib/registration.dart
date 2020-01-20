@@ -74,7 +74,7 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("IT Kongress Neu-Ulm"),
+        title: Text("IT Kongress Neu-Ulm", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       body: Container(
         child: Form(
@@ -87,7 +87,8 @@ class _RegistrationState extends State<Registration> {
                   padding: const EdgeInsets.all(15.0),
                   child: TextFormField(
                     onChanged: (String text) {
-                      this.firstName = text[0].toUpperCase() + text.substring(1);
+                      this.firstName =
+                          text[0].toUpperCase() + text.substring(1);
                     },
                     controller: firstNameController,
                     keyboardType: TextInputType.text,
@@ -95,7 +96,7 @@ class _RegistrationState extends State<Registration> {
                         labelText: "Vorname", border: OutlineInputBorder()),
                     validator: (value) {
                       if (value.length < 2) {
-                        return "Ein Name muss mindestens aus zwei Buchstaben bestehen";
+                        return "Ein Name muss aus mindestens zwei Buchstaben bestehen";
                       } else {
                         return null;
                       }
@@ -113,7 +114,7 @@ class _RegistrationState extends State<Registration> {
                         labelText: "Nachname", border: OutlineInputBorder()),
                     validator: (value) {
                       if (value.length < 2) {
-                        return "Ein Name muss mindestens aus zwei Buchstaben bestehen";
+                        return "Ein Name muss aus mindestens zwei Buchstaben bestehen";
                       } else {
                         return null;
                       }

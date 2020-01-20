@@ -27,9 +27,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primaryColor: Colors.blueGrey,
           accentColor: Colors.lightGreen,
-          fontFamily: 'Roboto'
-
-      ),
+          fontFamily: 'Roboto'),
       home: MyHomePage(title: 'IT Kongress Neu-Ulm'),
       routes: {
         '/registration': (context) => Registration(),
@@ -51,7 +49,6 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
-
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -94,29 +91,26 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      extendBody: true,
+        extendBody: true,
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title, style: TextStyle(fontWeight: FontWeight.bold),),
+          title: Text(
+            widget.title,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           centerTitle: true,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        /* floatingActionButton: Builder(builder: (BuildContext context) {
-          return FloatingActionButton(
-
-            tooltip: "Anmeldung",
-              child: Icon(Icons.group_add),
-              onPressed: () {
-                Navigator.pushNamed(context, '/registration');
-              });
-        }),*/
         floatingActionButton: FloatingActionButton(
             elevation: 4.0,
             onPressed: () {
               Navigator.pushNamed(context, '/registration');
             },
-            child: Icon(Icons.group_add, color: Colors.white,)),
+            child: Icon(
+              Icons.group_add,
+              color: Colors.white,
+            )),
         body: Center(
           //child: _widgetOptions.elementAt(_selectedIndex),
           child: currentWidget,
@@ -125,20 +119,6 @@ class _MyHomePageState extends State<MyHomePage> {
           color: Theme.of(context).primaryColor,
           shape: CircularNotchedRectangle(),
           notchMargin: 10.0,
-          /* child: BottomNavigationBar(
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.assignment),
-                  title: Text('Events'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.info),
-                  title: Text('Über'),
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              selectedItemColor: Colors.green,
-              onTap: _onItemTapped)*/
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
