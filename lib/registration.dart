@@ -74,81 +74,86 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registrierung"),
+        title: Text("IT Kongress Neu-Ulm"),
       ),
-      body: Form(
-        key: formKey,
-        child: Center(
-          child: ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextFormField(
-                  onChanged: (String text) {
-                    this.firstName = text;
-                  },
-                  controller: firstNameController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                      labelText: "Vorname", border: OutlineInputBorder()),
-                  validator: (value) {
-                    if (value.length < 2) {
-                      return "Ein Name muss mindestens aus zwei Buchstaben bestehen";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextFormField(
-                  onChanged: (String text) {
-                    this.lastName = text;
-                  },
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                      labelText: "Nachname", border: OutlineInputBorder()),
-                  validator: (value) {
-                    if (value.length < 2) {
-                      return "Ein Name muss mindestens aus zwei Buchstaben bestehen";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextFormField(
-                  onChanged: (String text) {
-                    this.mailAddress = text;
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                      labelText: "E-Mail", border: OutlineInputBorder()),
-                  validator: (value) {
-                    if (!value.contains("@")) {
-                      return "Bitte geben Sie eine gültige E-Mail Addresse an";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: RaisedButton(
-                    color: Colors.green,
-                    child: Text("Registrieren"),
-                    onPressed: () {
-                      if (formKey.currentState.validate()) {
-                        makePostRequest();
-                      } else {}
+      body: Container(
+        child: Form(
+          key: formKey,
+          child: Center(
+            child: ListView(
+              shrinkWrap: true,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextFormField(
+                    onChanged: (String text) {
+                      this.firstName = text[0].toUpperCase() + text.substring(1);
                     },
-                  ))
-            ],
+                    controller: firstNameController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                        labelText: "Vorname", border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value.length < 2) {
+                        return "Ein Name muss mindestens aus zwei Buchstaben bestehen";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextFormField(
+                    onChanged: (String text) {
+                      this.lastName = text[0].toUpperCase() + text.substring(1);
+                    },
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                        labelText: "Nachname", border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value.length < 2) {
+                        return "Ein Name muss mindestens aus zwei Buchstaben bestehen";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextFormField(
+                    onChanged: (String text) {
+                      this.mailAddress = text;
+                    },
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        labelText: "E-Mail", border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (!value.contains("@")) {
+                        return "Bitte geben Sie eine gültige E-Mail Addresse an";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: RaisedButton(
+                      color: Colors.green,
+                      child: Text(
+                        "Anmelden",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () {
+                        if (formKey.currentState.validate()) {
+                          makePostRequest();
+                        } else {}
+                      },
+                    ))
+              ],
+            ),
           ),
         ),
       ),

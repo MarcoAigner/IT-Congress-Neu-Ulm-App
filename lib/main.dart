@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:it_congress/events.dart';
 import 'package:it_congress/impressum.dart';
-import 'package:it_congress/people.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'registration.dart';
@@ -87,40 +86,51 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Builder(builder: (BuildContext context) {
-          return FloatingActionButton(
-              child: Icon(Icons.group_add),
-              onPressed: () {
-                Navigator.pushNamed(context, '/registration');
-              });
-        }),
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 4.0,
-          child: BottomNavigationBar(
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.assignment),
-                  title: Text('Events'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.info),
-                  title: Text('Über'),
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              selectedItemColor: Colors.green,
-              onTap: _onItemTapped),
-        ));
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/lecture_hall.jpg'),
+          fit: BoxFit.fill
+        )
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            // Here we take the value from the MyHomePage object that was created by
+            // the App.build method, and use it to set our appbar title.
+            title: Text(widget.title),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Builder(builder: (BuildContext context) {
+            return FloatingActionButton(
+
+              tooltip: "Anmeldung",
+                child: Icon(Icons.group_add),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/registration');
+                });
+          }),
+          body: Center(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+          bottomNavigationBar: BottomAppBar(
+            shape: CircularNotchedRectangle(),
+            notchMargin: 4.0,
+            child: BottomNavigationBar(
+                items: const <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.assignment),
+                    title: Text('Events'),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.info),
+                    title: Text('Über'),
+                  ),
+                ],
+                currentIndex: _selectedIndex,
+                selectedItemColor: Colors.green,
+                onTap: _onItemTapped),
+          )),
+    );
   }
 }
