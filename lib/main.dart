@@ -7,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'registration.dart';
 import 'registration.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -54,6 +53,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  Widget currentWidget = EventsWidget();
+
   List events;
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
@@ -69,11 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void openMail () async{
-    const url = "mailto:info@hs-neu-ulm.de?subject=Anmeldung IT-Kongress 2020&body=Sehr geehrte Damen und Herren,\nich möchte mich hiermit für den IT-Kongress 2020 anmelden.\nMein Name ist ";
-    if(await canLaunch(url)){
+  void openMail() async {
+    const url =
+        "mailto:info@hs-neu-ulm.de?subject=Anmeldung IT-Kongress 2020&body=Sehr geehrte Damen und Herren,\nich möchte mich hiermit für den IT-Kongress 2020 anmelden.\nMein Name ist ";
+    if (await canLaunch(url)) {
       await launch(url);
-    }else{
+    } else {
       throw "Could not launch $url";
     }
   }
@@ -86,51 +89,107 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/lecture_hall.jpg'),
-          fit: BoxFit.fill
-        )
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            // Here we take the value from the MyHomePage object that was created by
-            // the App.build method, and use it to set our appbar title.
-            title: Text(widget.title),
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: Builder(builder: (BuildContext context) {
-            return FloatingActionButton(
+    return Scaffold(
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        /* floatingActionButton: Builder(builder: (BuildContext context) {
+          return FloatingActionButton(
 
-              tooltip: "Anmeldung",
-                child: Icon(Icons.group_add),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/registration');
-                });
-          }),
-          body: Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
+            tooltip: "Anmeldung",
+              child: Icon(Icons.group_add),
+              onPressed: () {
+                Navigator.pushNamed(context, '/registration');
+              });
+        }),*/
+        floatingActionButton: FloatingActionButton(
+            elevation: 4.0,
+            onPressed: () {
+              Navigator.pushNamed(context, '/registration');
+            },
+            child: Icon(Icons.group_add)),
+        body: Center(
+          //child: _widgetOptions.elementAt(_selectedIndex),
+          child: currentWidget,
+        ),
+        bottomNavigationBar: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          notchMargin: 10.0,
+          /* child: BottomNavigationBar(
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.assignment),
+                  title: Text('Events'),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.info),
+                  title: Text('Über'),
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.green,
+              onTap: _onItemTapped)*/
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MaterialButton(
+                        textColor: Colors.black,
+                        child: Column(
+                          children: <Widget>[
+                            Icon(Icons.event),
+                            Text("Veranstaltungen")
+                          ],
+                        ),
+                        onPressed: () {
+                          if(currentWidget != EventsWidget()){
+                            setState(() {
+                              currentWidget = _widgetOptions[0];
+                            });
+                          }
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MaterialButton(
+                        textColor: Colors.black,
+                        child: Column(
+                          children: <Widget>[
+                            Icon(Icons.info_outline),
+                            Text("Über")
+                          ],
+                        ),
+                        onPressed: () {
+                          if(currentWidget != ImpressumWidget()){
+                           setState(() {
+                             currentWidget = _widgetOptions[1];
+                           });
+                          }
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
-          bottomNavigationBar: BottomAppBar(
-            shape: CircularNotchedRectangle(),
-            notchMargin: 4.0,
-            child: BottomNavigationBar(
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.assignment),
-                    title: Text('Events'),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.info),
-                    title: Text('Über'),
-                  ),
-                ],
-                currentIndex: _selectedIndex,
-                selectedItemColor: Colors.green,
-                onTap: _onItemTapped),
-          )),
-    );
+        ));
   }
 }
