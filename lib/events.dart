@@ -84,7 +84,7 @@ class EventsWidgetState extends State<EventsWidget> {
                                           children: <Widget>[
                                             Padding(
                                               padding:
-                                                  const EdgeInsets.all(15.0),
+                                                  const EdgeInsets.all(0.0),
                                               child: Text(
                                                 newData["timeslots"]
                                                             [timeslotIndex]
@@ -101,19 +101,22 @@ class EventsWidgetState extends State<EventsWidget> {
                                                                 [eventIndex]
                                                             ["lecturers"] !=
                                                     null),
-                                                builder: (context) => Text(
-                                                    newData["timeslots"]
-                                                                        [timeslotIndex]
-                                                                    ["events"]
-                                                                [eventIndex]
-                                                            ["lecturers"]
-                                                        .toString()
-                                                        .substring(1,newData["timeslots"]
-                                                    [timeslotIndex]
-                                                    ["events"]
-                                                    [eventIndex]
-                                                    ["lecturers"]
-                                                        .toString().length-1), textAlign: TextAlign.center,)),
+                                                builder: (context) => Padding(
+                                                  padding: const EdgeInsets.only(top: 15),
+                                                  child: Text(
+                                                      newData["timeslots"]
+                                                                          [timeslotIndex]
+                                                                      ["events"]
+                                                                  [eventIndex]
+                                                              ["lecturers"]
+                                                          .toString()
+                                                          .substring(1,newData["timeslots"]
+                                                      [timeslotIndex]
+                                                      ["events"]
+                                                      [eventIndex]
+                                                      ["lecturers"]
+                                                          .toString().length-1), textAlign: TextAlign.center,),
+                                                )),
                                           ],
                                         ),
                                       ),
