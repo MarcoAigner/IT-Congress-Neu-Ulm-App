@@ -113,7 +113,7 @@ class EventsWidgetState extends State<EventsWidget> {
                                                     ["events"]
                                                     [eventIndex]
                                                     ["lecturers"]
-                                                        .toString().length-1))),
+                                                        .toString().length-1), textAlign: TextAlign.center,)),
                                           ],
                                         ),
                                       ),

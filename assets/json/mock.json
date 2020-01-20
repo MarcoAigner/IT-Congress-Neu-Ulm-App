@@ -84,6 +84,65 @@
           "description": "some descriptive stuff"
         }
       ]
+    },
+    {
+      "time": "11:45-12:00",
+      "events": [
+        {
+          "title": "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse",
+          "lecturers": null,
+          "category": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "time": "12:00-12:45",
+      "events": [
+        {
+          "title": "Wie man eine KI in die Irre führt",
+          "lecturers": [
+            "Anton Winschel [XITASO GmbH]"
+          ],
+          "category": "Data Science & Softwareentwicklung",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "Datenschutz und Informationssicherheit im Doppelpack - anwenderorientiert erklärt am Beispiel des Modelabels Marc Cain",
+          "lecturers": [
+            "Bernd Länge",
+            "Martin Müller [AXSOS AG]"
+          ],
+          "category": "Informationssicherheit & Datenschutz",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "Digitale Transformation in der Pharmaindustrie - Smart Factory 4.0",
+          "lecturers": [
+            "Holger Mettler, Sabrina Krausz [Exyte Central Europe GmbH]"
+          ],
+          "category": "Digitale Transformation 4.0",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "Office 365 - Die Welt von heute tickt anders",
+          "lecturers": [
+            "Denisa Schill",
+            "Rolf Schulte [IT sure GmbH]"
+          ],
+          "category": "New Work-Modern Workplace",
+          "description": "some descriptive stuff"
+        },
+        {
+          "title": "Cooperative IT Innovation Space (CITIS) – Co-Innovation mit Unternehmen im Raum Donau-Iller",
+          "lecturers": [
+            "Prof. Dr. Thomas Bayer",
+            "Anna Gaab [Institut für Dienstleistungsmanagement an der Hochschule Neu-Ulm]"
+          ],
+          "category": "InnoSÜD",
+          "description": "some descriptive stuff"
+        }
+      ]
     }
   ]
 }
