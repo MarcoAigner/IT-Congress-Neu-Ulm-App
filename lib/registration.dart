@@ -143,7 +143,7 @@ class _RegistrationState extends State<Registration> {
                     padding: const EdgeInsets.all(20),
                     child: FloatingActionButton.extended(
                       heroTag: 'fab',
-                      label: Text("Anmelden", style: TextStyle(color: Colors.white),),
+                      label: Text("Anmelden", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
                       onPressed: () {
                         if (formKey.currentState.validate()) {
                           makePostRequest();

@@ -65,75 +65,104 @@ class EventsWidgetState extends State<EventsWidget> {
                                 ],
                               ),
                             ),
-                            ListView.builder(
-                              itemBuilder: (context, eventIndex) {
-                                return Padding(
-                                  padding: EdgeInsets.all(20),
-                                  child: Container(
-                                    decoration: BoxDecoration(boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey, blurRadius: 10)
-                                    ]),
-                                    child: Card(
-                                      elevation: 15,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(25.0),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: <Widget>[
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(0.0),
-                                              child: Text(
-                                                newData["timeslots"]
-                                                            [timeslotIndex]
-                                                        ["events"][eventIndex]
-                                                    ["title"],
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(fontSize: 20),
+                            GestureDetector(
+                             onTap: () => Scaffold.of(context).showSnackBar(SnackBar(content: Text("Detailansicht in Arbeit", textAlign: TextAlign.center,), backgroundColor: Colors.lightGreen, duration: Duration(seconds: 2),)),
+                              child: ListView.builder(
+                                itemBuilder: (context, eventIndex) {
+                                  return Padding(
+                                    padding: EdgeInsets.all(20),
+                                    child: Container(
+                                      decoration: BoxDecoration(boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey, blurRadius: 10)
+                                      ]),
+                                      child: Card(
+                                        elevation: 15,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(25.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(0.0),
+                                                child: Text(
+                                                  newData["timeslots"]
+                                                              [timeslotIndex]
+                                                          ["events"][eventIndex]
+                                                      ["title"],
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(fontSize: 20),
+                                                ),
                                               ),
-                                            ),
-                                            ConditionalBuilder(
-                                                condition: (newData["timeslots"][
-                                                                        timeslotIndex]
-                                                                    ["events"]
-                                                                [eventIndex]
-                                                            ["lecturers"] !=
-                                                    null),
-                                                builder: (context) => Padding(
-                                                  padding: const EdgeInsets.only(top: 15),
-                                                  child: Text(
-                                                      newData["timeslots"]
-                                                                          [timeslotIndex]
+                                              ConditionalBuilder(
+                                                  condition: (newData["timeslots"][
+                                                                          timeslotIndex]
                                                                       ["events"]
                                                                   [eventIndex]
-                                                              ["lecturers"]
-                                                          .toString()
-                                                          .substring(1,newData["timeslots"]
-                                                      [timeslotIndex]
-                                                      ["events"]
-                                                      [eventIndex]
-                                                      ["lecturers"]
-                                                          .toString().length-1), textAlign: TextAlign.center,),
-                                                )),
-                                          ],
+                                                              ["lecturers"] !=
+                                                      null),
+                                                  builder: (context) => Padding(
+                                                    padding: const EdgeInsets.only(top: 15),
+                                                    child: Text(
+                                                        newData["timeslots"]
+                                                                            [timeslotIndex]
+                                                                        ["events"]
+                                                                    [eventIndex]
+                                                                ["lecturers"]
+                                                            .toString()
+                                                            .substring(1,newData["timeslots"]
+                                                        [timeslotIndex]
+                                                        ["events"]
+                                                        [eventIndex]
+                                                        ["lecturers"]
+                                                            .toString().length-1), textAlign: TextAlign.center,),
+                                                  )),
+
+                                              Padding(
+                                                padding: const EdgeInsets.only(top: 15),
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    ConditionalBuilder(
+                                                     condition: (newData["timeslots"][
+                                                     timeslotIndex]
+                                                     ["events"]
+                                                     [eventIndex]
+                                                     ["category"] !=
+                                                         null),
+                                                      builder: (context) => Padding(
+                                                        padding: const EdgeInsets.only(right: 20.0),
+                                                        child: Text(newData["timeslots"][
+                                                        timeslotIndex]
+                                                        ["events"]
+                                                        [eventIndex]
+                                                        ["category"]),
+                                                      ),
+                                                    ),
+                                                    Icon(Icons.expand_more)
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                              itemCount: newData == null
-                                  ? 0
-                                  : newData["timeslots"][timeslotIndex]
-                                          ["events"]
-                                      .length,
-                              //Handles the correct sizing while using nested list views
-                              shrinkWrap: true,
+                                  );
+                                },
+                                itemCount: newData == null
+                                    ? 0
+                                    : newData["timeslots"][timeslotIndex]
+                                            ["events"]
+                                        .length,
+                                //Handles the correct sizing while using nested list views
+                                shrinkWrap: true,
 
-                              //deactivates scrolling for the inner list views
-                              physics: ClampingScrollPhysics(),
+                                //deactivates scrolling for the inner list views
+                                physics: ClampingScrollPhysics(),
+                              ),
                             ),
                           ],
                         ),
