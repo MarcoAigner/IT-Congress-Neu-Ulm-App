@@ -4,7 +4,6 @@ import 'package:it_congress/impressum.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'registration.dart';
-import 'registration.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,15 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:conditional_builder/conditional_builder.dart';
-import 'package:it_congress/json-congress.dart';
-import 'dart:async' show Future;
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:it_congress/json-event.dart';
-import 'package:it_congress/json-person.dart';
-import 'package:it_congress/lecture-card.dart';
 
 class EventsWidget extends StatefulWidget {
   EventsWidget();
