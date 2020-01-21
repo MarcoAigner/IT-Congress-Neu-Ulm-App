@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:it_congress/events.dart';
 import 'package:it_congress/impressum.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -102,89 +101,35 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.extended(
+          heroTag: 'fab',
+          label: Text("Anmelden", style: TextStyle(color: Colors.white),),
+            icon: Icon(Icons.supervised_user_circle,color: Colors.white,),
             elevation: 4.0,
             onPressed: () {
               Navigator.pushNamed(context, '/registration');
             },
-            child: Icon(
-              Icons.group_add,
-              color: Colors.white,
-            )),
+            ),
         body: Center(
           //child: _widgetOptions.elementAt(_selectedIndex),
-          child: currentWidget,
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Theme.of(context).primaryColor,
-          shape: CircularNotchedRectangle(),
-          notchMargin: 10.0,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    MaterialButton(
-                      textColor: Colors.white,
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Icon(Icons.event),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text("Veranstaltungen"),
-                          )
-                        ],
-                      ),
-                      onPressed: () {
-                        if (currentWidget != EventsWidget()) {
-                          setState(() {
-                            currentWidget = _widgetOptions[0];
-                          });
-                        }
-                      },
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    MaterialButton(
-                      textColor: Colors.white,
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Icon(Icons.info_outline),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text("Über"),
-                          )
-                        ],
-                      ),
-                      onPressed: () {
-                        if (currentWidget != ImpressumWidget()) {
-                          setState(() {
-                            currentWidget = _widgetOptions[1];
-                          });
-                        }
-                      },
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.white,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.event),
+              title: Text('Veranstaltungen'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info_outline),
+              title: Text('Über'),
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.lightGreen,
+          onTap: _onItemTapped,
+          backgroundColor: Colors.blueGrey,
         ));
   }
 }

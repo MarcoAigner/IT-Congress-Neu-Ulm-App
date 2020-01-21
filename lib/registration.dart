@@ -74,7 +74,7 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("IT Kongress Neu-Ulm", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("Anmeldung", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       body: Container(
         child: Form(
@@ -141,12 +141,9 @@ class _RegistrationState extends State<Registration> {
                 ),
                 Padding(
                     padding: const EdgeInsets.all(20),
-                    child: RaisedButton(
-                      color: Colors.lightGreen,
-                      child: Text(
-                        "Anmelden",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
+                    child: FloatingActionButton.extended(
+                      heroTag: 'fab',
+                      label: Text("Anmelden", style: TextStyle(color: Colors.white),),
                       onPressed: () {
                         if (formKey.currentState.validate()) {
                           makePostRequest();
