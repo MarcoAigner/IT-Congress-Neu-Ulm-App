@@ -2,7 +2,7 @@
 
 This project is implementing an app, representing the annual "it-congress" held at hnu university of applied sciences in Neu-Ulm.
 
-<img src="https://i.imgur.com/SB3sgBv.jpg" width="800" alt="it-congress-app">
+<img src="https://i.imgur.com/mCDwOpO.jpg" width="800" alt="it-congress-app">
 
 ## Status Quo
 The app is structured using a Bottom NavigationBar.
@@ -21,7 +21,7 @@ Using the prominent FloatingActionBottom at the lower center of the app, users g
 
 ## Current ToDos
 
-Refine the layout. Check if outsourcing of the .json file onto HNU's servers is possible. Feature #3
+Check if outsourcing of the .json file onto HNU's servers is possible. Feature #3
 
 ## Team
 
