@@ -1,3 +1,4 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:conditional_builder/conditional_builder.dart';
@@ -57,8 +58,49 @@ class EventsWidgetState extends State<EventsWidget> {
                                 ],
                               ),
                             ),
+                            /*ListView.builder(
+                              itemCount: newData == null
+                                  ? 0
+                                  : newData["timeslots"][timeslotIndex]
+                              ["events"]
+                                  .length ,
+                                shrinkWrap: true,
+                                itemBuilder: (
+                              context,
+                              eventIndex,
+                            ) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Card(
+                                  child: ExpandablePanel(
+                                    tapHeaderToExpand: false,
+                                    iconColor: Colors.lightGreen,
+                                    tapBodyToCollapse: false,
+                                    hasIcon: true,
+                                    header: Text(
+                                      newData["timeslots"][timeslotIndex]["events"]
+                                              [eventIndex]["title"]
+                                          .toString(),
+                                      softWrap: true,
+                                      textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 20)
+                                    ),
+                                    collapsed: Text("Test collapsed"),
+                                    expanded: Text("Test expanded"),
+                                  ),
+                                ),
+                              );
+                            })*/
                             GestureDetector(
-                             onTap: () => Scaffold.of(context).showSnackBar(SnackBar(content: Text("Detailansicht in Arbeit", textAlign: TextAlign.center,), backgroundColor: Colors.lightGreen, duration: Duration(seconds: 2),)),
+                              onTap: () =>
+                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                                  "Detailansicht in Arbeit",
+                                  textAlign: TextAlign.center,
+                                ),
+                                backgroundColor: Colors.lightGreen,
+                                duration: Duration(seconds: 2),
+                              )),
                               child: ListView.builder(
                                 itemBuilder: (context, eventIndex) {
                                   return Padding(
@@ -85,57 +127,75 @@ class EventsWidgetState extends State<EventsWidget> {
                                                           ["events"][eventIndex]
                                                       ["title"],
                                                   textAlign: TextAlign.center,
-                                                  style: TextStyle(fontSize: 20),
+                                                  style:
+                                                      TextStyle(fontSize: 20),
                                                 ),
                                               ),
                                               ConditionalBuilder(
-                                                  condition: (newData["timeslots"][
-                                                                          timeslotIndex]
-                                                                      ["events"]
-                                                                  [eventIndex]
-                                                              ["lecturers"] !=
+                                                  condition: (newData["timeslots"]
+                                                                  [
+                                                                  timeslotIndex]
+                                                              [
+                                                              "events"][eventIndex]
+                                                          ["lecturers"] !=
                                                       null),
                                                   builder: (context) => Padding(
-                                                    padding: const EdgeInsets.only(top: 15),
-                                                    child: Text(
-                                                        newData["timeslots"]
-                                                                            [timeslotIndex]
-                                                                        ["events"]
-                                                                    [eventIndex]
-                                                                ["lecturers"]
-                                                            .toString()
-                                                            .substring(1,newData["timeslots"]
-                                                        [timeslotIndex]
-                                                        ["events"]
-                                                        [eventIndex]
-                                                        ["lecturers"]
-                                                            .toString().length-1), textAlign: TextAlign.center,),
-                                                  )),
-
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(top: 15),
+                                                        child: Text(
+                                                          newData["timeslots"][
+                                                                              timeslotIndex]
+                                                                          [
+                                                                          "events"]
+                                                                      [
+                                                                      eventIndex]
+                                                                  ["lecturers"]
+                                                              .toString()
+                                                              .substring(
+                                                                  1,
+                                                                  newData["timeslots"][timeslotIndex]["events"][eventIndex]
+                                                                              [
+                                                                              "lecturers"]
+                                                                          .toString()
+                                                                          .length -
+                                                                      1),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                        ),
+                                                      )),
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 15),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    ConditionalBuilder(
-                                                     condition: (newData["timeslots"][
-                                                     timeslotIndex]
-                                                     ["events"]
-                                                     [eventIndex]
-                                                     ["category"] !=
-                                                         null),
-                                                      builder: (context) => Padding(
-                                                        padding: const EdgeInsets.only(right: 20.0),
-                                                        child: Text(newData["timeslots"][
-                                                        timeslotIndex]
-                                                        ["events"]
-                                                        [eventIndex]
-                                                        ["category"]),
-                                                      ),
+                                                padding: const EdgeInsets.only(
+                                                    top: 8.0),
+                                                child: ConditionalBuilder(
+                                                  condition: (newData["timeslots"]
+                                                                  [
+                                                                  timeslotIndex]
+                                                              [
+                                                              "events"][eventIndex]
+                                                          ["category"] !=
+                                                      null),
+                                                  builder: (context) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 20.0),
+                                                    child: Text(
+                                                      newData["timeslots"][
+                                                                  timeslotIndex]
+                                                              ["events"][
+                                                          eventIndex]["category"],
+                                                      style: TextStyle(
+                                                          color: Colors
+                                                              .lightGreen, fontWeight: FontWeight.bold),
+                                                      textAlign: TextAlign.center,
                                                     ),
-                                                    Icon(Icons.expand_more)
-                                                  ],
+                                                  ),
                                                 ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.only(top: 20.0),
+                                                child: Icon(Icons.expand_more),
                                               ),
                                             ],
                                           ),
