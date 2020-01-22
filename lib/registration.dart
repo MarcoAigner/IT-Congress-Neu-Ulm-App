@@ -33,42 +33,50 @@ class _RegistrationState extends State<Registration> {
   String mailAddress;
   String currentTime;
 
+  //bool value that checks if the app is still waiting for a response, in which case the button shall do nothing
+  bool buttonDisabled = false;
+
   //Registration of user within the rest-database using an http POST
   void makePostRequest() async {
-    //Database url
-    String url = 'https://itkongress-c3cf.restdb.io/rest/participant?';
-    //Database access and body format declaration
-    Map<String, String> headers = {
-      "content-type": "application/json",
-      "x-apikey": "9f7807fc5f7739fb571d79bb28ddf7ae311ed",
-      "cache-control": "no-cache"
-    };
+    if (buttonDisabled == false) {
+      buttonDisabled = true;
+      //Database url
+      String url = 'https://itkongress-c3cf.restdb.io/rest/participant?';
+      //Database access and body format declaration
+      Map<String, String> headers = {
+        "content-type": "application/json",
+        "x-apikey": "9f7807fc5f7739fb571d79bb28ddf7ae311ed",
+        "cache-control": "no-cache"
+      };
 
-    //Assembly of the database body based on global variables
-    String body = '{"first_name": "' +
-        firstName +
-        '", "last_name": "' +
-        lastName +
-        '", "email": "' +
-        mailAddress +
-        '", "signup_date": "' +
-        DateTime.now().toLocal().toUtc().toString() +
-        '"}';
+      //Assembly of the database body based on global variables
+      String body = '{"first_name": "' +
+          firstName +
+          '", "last_name": "' +
+          lastName +
+          '", "email": "' +
+          mailAddress +
+          '", "signup_date": "' +
+          DateTime.now().toLocal().toUtc().toString() +
+          '"}';
 
-    //POST request that return a response
-    Response response = await post(url, headers: headers, body: body);
+      //POST request that return a response
+      Response response = await post(url, headers: headers, body: body);
 
-    //Debug
-    print(response.statusCode.toString() +
-        "\n" +
-        response.headers.toString() +
-        "\n" +
-        response.body.toString());
+      //Debug
+      print(response.statusCode.toString() +
+          "\n" +
+          response.headers.toString() +
+          "\n" +
+          response.body.toString());
 
-    //Http 201: Created
-    if (response.statusCode == 201) {
-      //Back to Homepage
-      Navigator.pop(context, "Sie haben sich erfolgreich angemeldet");
+      //Http 201: Created
+      if (response.statusCode == 201) {
+        //Re-enable the button
+        buttonDisabled = false;
+        //Back to Homepage
+        Navigator.pop(context, "Sie haben sich erfolgreich angemeldet");
+      }
     }
   }
 
@@ -76,7 +84,11 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Anmeldung", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("Anmeldung",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.white)),
       ),
       body: Builder(
         builder: (BuildContext context) {
