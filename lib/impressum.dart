@@ -5,7 +5,6 @@ import 'package:url_launcher/url_launcher.dart';
 class ImpressumWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.min,
