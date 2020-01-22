@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -9,6 +8,7 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
+  //form key and text editing controllers to validate user input
   final formKey = GlobalKey<FormState>();
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
@@ -27,22 +27,25 @@ class _RegistrationState extends State<Registration> {
     super.dispose();
   }
 
+  //Global variables to store user input in
   String firstName;
   String lastName;
   String mailAddress;
   String currentTime;
 
+  //Registration of user within the rest-database using an http POST
   void makePostRequest() async {
-    // Configuration for rest-db connection
+    //Database url
     String url = 'https://itkongress-c3cf.restdb.io/rest/participant?';
+    //Database access and body format declaration
     Map<String, String> headers = {
       "content-type": "application/json",
       "x-apikey": "9f7807fc5f7739fb571d79bb28ddf7ae311ed",
       "cache-control": "no-cache"
     };
 
-    //Assign the payload values
-    String json = '{"first_name": "' +
+    //Assembly of the database body based on global variables
+    String body = '{"first_name": "' +
         firstName +
         '", "last_name": "' +
         lastName +
@@ -52,8 +55,8 @@ class _RegistrationState extends State<Registration> {
         DateTime.now().toLocal().toUtc().toString() +
         '"}';
 
-    //Make POST request
-    Response response = await post(url, headers: headers, body: json);
+    //POST request that return a response
+    Response response = await post(url, headers: headers, body: body);
 
     //Debug
     print(response.statusCode.toString() +
@@ -62,8 +65,10 @@ class _RegistrationState extends State<Registration> {
         "\n" +
         response.body.toString());
 
+    //Http 201: Created
     if (response.statusCode == 201) {
-      Navigator.pop(context);
+      //Back to Homepage
+      Navigator.pop(context, "Sie haben sich erfolgreich angemeldet");
     }
   }
 
@@ -73,84 +78,101 @@ class _RegistrationState extends State<Registration> {
       appBar: AppBar(
         title: Text("Anmeldung", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
-      body: Container(
-        child: Form(
-          key: formKey,
-          child: Center(
-            child: ListView(
-              shrinkWrap: true,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextFormField(
-                    onChanged: (String text) {
-                      this.firstName =
-                          text[0].toUpperCase() + text.substring(1);
-                    },
-                    controller: firstNameController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        labelText: "Vorname", border: OutlineInputBorder()),
-                    validator: (value) {
-                      if (value.length < 2) {
-                        return "Ein Name muss aus mindestens zwei Buchstaben bestehen";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
+      body: Builder(
+        builder: (BuildContext context) {
+          return Container(
+            child: Form(
+              //Validation logic
+              key: formKey,
+              child: Center(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: TextFormField(
+                        onChanged: (String text) {
+                          this.firstName =
+                              text[0].toUpperCase() + text.substring(1);
+                        },
+                        controller: firstNameController,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                            labelText: "Vorname", border: OutlineInputBorder()),
+                        validator: (value) {
+                          if (value.length < 2) {
+                            return "Ein Name muss aus mindestens zwei Buchstaben bestehen";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: TextFormField(
+                        onChanged: (String text) {
+                          this.lastName =
+                              text[0].toUpperCase() + text.substring(1);
+                        },
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                            labelText: "Nachname",
+                            border: OutlineInputBorder()),
+                        validator: (value) {
+                          if (value.length < 2) {
+                            return "Ein Name muss aus mindestens zwei Buchstaben bestehen";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: TextFormField(
+                        onChanged: (String text) {
+                          this.mailAddress = text;
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                            labelText: "E-Mail", border: OutlineInputBorder()),
+                        validator: (value) {
+                          if (!value.contains("@")) {
+                            return "Bitte geben Sie eine gültige E-Mail Addresse an";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Builder(
+                          builder: (BuildContext context) {
+                            return FloatingActionButton.extended(
+                              heroTag: 'fab',
+                              label: Text(
+                                "Anmelden",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                              ),
+                              onPressed: () {
+                                if (formKey.currentState.validate()) {
+                                  makePostRequest();
+                                } else {}
+                              },
+                            );
+                          },
+                        ))
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextFormField(
-                    onChanged: (String text) {
-                      this.lastName = text[0].toUpperCase() + text.substring(1);
-                    },
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        labelText: "Nachname", border: OutlineInputBorder()),
-                    validator: (value) {
-                      if (value.length < 2) {
-                        return "Ein Name muss aus mindestens zwei Buchstaben bestehen";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextFormField(
-                    onChanged: (String text) {
-                      this.mailAddress = text;
-                    },
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                        labelText: "E-Mail", border: OutlineInputBorder()),
-                    validator: (value) {
-                      if (!value.contains("@")) {
-                        return "Bitte geben Sie eine gültige E-Mail Addresse an";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: FloatingActionButton.extended(
-                      heroTag: 'fab',
-                      label: Text("Anmelden", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
-                      onPressed: () {
-                        if (formKey.currentState.validate()) {
-                          makePostRequest();
-                        } else {}
-                      },
-                    ))
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

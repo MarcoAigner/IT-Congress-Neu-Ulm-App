@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:it_congress/events.dart';
 import 'package:it_congress/impressum.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'registration.dart';
 
@@ -59,24 +59,32 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  //Event and Impressum widget within a list to be accessed by an index
   List<Widget> _widgetOptions = <Widget>[
     EventsWidget(),
     ImpressumWidget(),
   ];
 
+  //Method that displays the appropriate widgetOption based on the navigationBars clicked item
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  void openMail() async {
-    const url =
-        "mailto:info@hs-neu-ulm.de?subject=Anmeldung IT-Kongress 2020&body=Sehr geehrte Damen und Herren,\nich möchte mich hiermit für den IT-Kongress 2020 anmelden.\nMein Name ist ";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw "Could not launch $url";
+  //Async Method that navigates to the registration page and awaits a success message
+  void navigateToRegistration(BuildContext context) async {
+    final result = await Navigator.pushNamed(context, "/registration");
+    if (result != null) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(
+          result.toString(),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.lightGreen,
+      ));
     }
   }
 
@@ -100,18 +108,33 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton.extended(
-          heroTag: 'fab',
-          label: Text("Anmelden", style: TextStyle(color: Colors.white),),
-            icon: Icon(Icons.supervised_user_circle,color: Colors.white,),
-            elevation: 4.0,
-            onPressed: () {
-              Navigator.pushNamed(context, '/registration');
-            },
-            ),
-        body: Center(
-          //child: _widgetOptions.elementAt(_selectedIndex),
-          child: _widgetOptions.elementAt(_selectedIndex),
+        floatingActionButton: Builder(
+          builder: (BuildContext context) {
+            return FloatingActionButton.extended(
+              heroTag: 'fab',
+              label: Text(
+                "Anmelden",
+                style: TextStyle(color: Colors.white),
+              ),
+              icon: Icon(
+                Icons.supervised_user_circle,
+                color: Colors.white,
+              ),
+              elevation: 4.0,
+              onPressed: () {
+                //Navigator.pushNamed(context, '/registration');
+                navigateToRegistration(context);
+              },
+            );
+          },
+        ),
+        body: Builder(
+          builder: (BuildContext context) {
+            return Center(
+              //child: _widgetOptions.elementAt(_selectedIndex),
+              child: _widgetOptions.elementAt(_selectedIndex),
+            );
+          },
         ),
         bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.white,

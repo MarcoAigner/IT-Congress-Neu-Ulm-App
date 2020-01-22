@@ -1,55 +1,47 @@
 {
   "altered": "29.12.2019-14:36",
-  "timeslots": [
-    {
-      "time": "09:15-09:30",
-      "events": [
-        {
-          "title": "Begrüßung durch Prof. Dr. Julia Kormann & OB Gunter Czisch",
-          "lecturers": [
-            "Prof. Dr. Julia Kormann",
-            "Gunter Czisch"
-          ],
-          "category": null,
-          "description": null
-        }
-      ]
-    },
+  "timeslots": [{
+    "time": "09:15-09:30",
+    "events": [{
+      "title": "Begrüßung durch Prof. Dr. Julia Kormann & OB Gunter Czisch",
+      "lecturers": [
+        "Prof. Dr. Julia Kormann",
+        "Gunter Czisch"
+      ],
+      "category": null,
+      "description": null
+    }]
+  },
     {
       "time": "09:30-10:30",
-      "events": [
-        {
-          "title": "Keynote: Der Masterplan - Chinas Weg zur digitalen Weltmacht",
-          "lecturers": [
-            "Johannes Stephany"
-          ],
-          "category": null,
-          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata"
-        }
-      ]
+      "events": [{
+        "title": "Keynote: Der Masterplan - Chinas Weg zur digitalen Weltmacht",
+        "lecturers": [
+          "Johannes Stephany"
+        ],
+        "category": null,
+        "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata"
+      }]
     },
     {
       "time": "10:30-11:00",
-      "events": [
-        {
-          "title": "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse",
-          "lecturers": null,
-          "category": null,
-          "description": null
-        }
-      ]
+      "events": [{
+        "title": "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse",
+        "lecturers": null,
+        "category": null,
+        "description": null
+      }]
     },
     {
       "time": "11:00-11:45",
-      "events": [
-        {
-          "title": "Fair Play für Künstliche Intelligenz",
-          "lecturers": [
-            "Dr Valentin Zacharias"
-          ],
-          "category": "Data Science & Softwareentwicklung",
-          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata"
-        },
+      "events": [{
+        "title": "Fair Play für Künstliche Intelligenz",
+        "lecturers": [
+          "Dr Valentin Zacharias"
+        ],
+        "category": "Data Science & Softwareentwicklung",
+        "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata"
+      },
         {
           "title": "User Awareness - Das beste Intrusioon Detection System der Welt",
           "lecturers": [
@@ -87,26 +79,23 @@
     },
     {
       "time": "11:45-12:00",
-      "events": [
-        {
-          "title": "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse",
-          "lecturers": null,
-          "category": null,
-          "description": null
-        }
-      ]
+      "events": [{
+        "title": "Kaffeepause zum Networking und zum Austausch bei der Fach-und Recruitingmesse",
+        "lecturers": null,
+        "category": null,
+        "description": null
+      }]
     },
     {
       "time": "12:00-12:45",
-      "events": [
-        {
-          "title": "Wie man eine KI in die Irre führt",
-          "lecturers": [
-            "Anton Winschel [XITASO GmbH]"
-          ],
-          "category": "Data Science & Softwareentwicklung",
-          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata"
-        },
+      "events": [{
+        "title": "Wie man eine KI in die Irre führt",
+        "lecturers": [
+          "Anton Winschel [XITASO GmbH]"
+        ],
+        "category": "Data Science & Softwareentwicklung",
+        "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata"
+      },
         {
           "title": "Datenschutz und Informationssicherheit im Doppelpack - anwenderorientiert erklärt am Beispiel des Modelabels Marc Cain",
           "lecturers": [
